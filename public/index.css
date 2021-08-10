@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Adobe';
+    src: local('Adobe'), url(fonts/Adobe.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'AdobeBold';
+    src: local('AdobeBold'), url(fonts/AdobeBold.woff) format('woff');
+}

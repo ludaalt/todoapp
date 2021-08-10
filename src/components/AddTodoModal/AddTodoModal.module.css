@@ -1,0 +1,35 @@
+.modalWrap {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.3);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalBody {
+    width: 800px;
+
+    height: 500px;
+
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.modalForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.modalControl {
+    order: -1;
+    border: 2px solid red;
+
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,65 @@
+aside {
+    max-width: 20%;
+    margin-right: 80px;
+}
+
+.categoryList {
+    margin-bottom: 40px;
+}
+
+ .categoryList li {
+    /* padding: 5px 10px 5px 0;  */
+    cursor: pointer;} 
+
+.categoryList li:not(:last-child) {
+    margin-bottom: 25px;
+}
+
+.categoryList li span {
+    cursor: pointer;
+}
+
+/* .colorButton {
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 10px;
+    text-align: right;
+
+    display: flex;
+    align-items: center;
+
+    font-family: 'Adobe';
+    font-size: 15px;
+    font-weight: bold;
+} */
+
+/* .category {
+    display: inline-block;
+    margin-right: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.categoryWork {
+    background-color: #D2CEFF;
+}
+
+.categoryStudy {
+    background-color: #D1E5F7;
+}
+
+.categoryEntertainment {
+    background-color: #FFCECE;
+}
+
+.categoryFamily {
+    background-color: #DAF2D6;
+} */
+
+form input {
+    margin-right: 10px;
+}
+
