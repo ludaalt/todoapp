@@ -1,10 +1,11 @@
 .todoItem {
-    width: 45%;
+    max-width: 45%;
     background-color: #FFF9DE;
     border-radius: 15px;
     padding: 20px;
 
     font-family: 'AdobeBold';
+    display: inline-block;
 }
 
 .todoHeader {
@@ -28,7 +29,6 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid orange;
 }
 
 
@@ -71,6 +71,8 @@ p {
     cursor: pointer;
     padding: 12px 100px 12px 15px;
     color: #69666C;
+    font-family: 'Adobe';
+    font-weight: bold;
 }
 
 .controlButtonItem:first-child {
@@ -82,18 +84,9 @@ p {
 }
 
 .todoCategories {
-    border: 2px solid red;
     display: flex;
 }
 
-/* .done {
-    color: red;
-    border: 2px solid red;
-} */
-
-/* .done h2 {
-    text-decoration: line-through;
-} */
 
 @keyframes doneTask {
     0%     { transform-origin:  0% 50%; transform:scaleX(0);  }
@@ -104,7 +97,7 @@ p {
     position: relative;
 }
 
-.done h2:after {
+.done h2::after {
     content: ' ';
     position: absolute;
     top: calc(50% - 1px);
@@ -113,4 +106,8 @@ p {
     background-color: #69666C;
     height: 2px;
     animation: doneTask .75s ease-in-out forwards;
+}
+
+.done .todoDescription {
+    text-decoration: line-through;
 }

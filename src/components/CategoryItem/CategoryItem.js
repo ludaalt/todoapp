@@ -14,6 +14,7 @@ const CategoryItem = ({item, titleItem}) => {
     return (
         <button className={s.colorButton}>
             <span className={classesToApply} aria-label="todo-category"></span>
+                {/* {titleItem && item} */}
                 {titleItem && item}
         </button>
     )

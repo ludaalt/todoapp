@@ -23,13 +23,6 @@ function App() {
       completed: false},
   ]);
 
-  // const addTodoItem = (todo) => {
-  //   setTodos([...todos, {id: Date.now(), name: todo, completed: false}])
-  // }
-
-  // const deleteTodo = (id) => {
-  //   setTodos(todos.filter(item => item.id !== id))
-  // }
 
   const toggleDone = (id) => {
     setTodos(
@@ -48,6 +41,20 @@ function App() {
     setAddingTodo(value)
   }
 
+  const addNewTodo = (taskTitle, taskDescription) => {
+    setTodos(
+      todos.concat([
+        {
+          id: Date.now(),
+          title: taskTitle,
+          description: taskDescription,
+          categories: [],
+          completed: false
+        }
+      ])
+    )
+  }
+
   return (
     <Context.Provider value={{addTodo}}>
       <div className="app">
@@ -56,11 +63,10 @@ function App() {
           <Aside />
           <TodoList todos={todos} onToggle={toggleDone} /> 
 
-          {isAddingTodo && <AddTodoModal />}
+          {isAddingTodo && <AddTodoModal active={isAddingTodo} setActive={setAddingTodo} onCreateTask={addNewTodo} />}
         </div>       
 
-        {/* <AddTodo addTodoItem={addTodoItem} /> */}
-        {/* <TodoList todos={todos} /> */}
+
       </div>  
     </Context.Provider>  
   );

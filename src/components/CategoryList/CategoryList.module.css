@@ -1,0 +1,12 @@
+.categoryList {
+    margin-bottom: 40px;
+}
+
+ .categoryList li {
+    /* padding: 5px 10px 5px 0;  */
+    cursor: pointer;
+} 
+
+.categoryList li span {
+    cursor: pointer;
+}

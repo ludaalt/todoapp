@@ -1,20 +1,13 @@
 import { useState } from 'react';
 // import cl from 'classnames';
 import s from './Aside.module.css';
-import CategoryItem from '../CategoryItem/CategoryItem';
+import CategoryList from '../CategoryList/CategoryList';
 
 const Aside = () => {
-    const [categories, setCategories] = useState(['work', 'study', 'entertainment', 'family'])
 
     return (
         <aside>
-            <ul className={s.categoryList}>
-                {
-                    categories.map((item, index) => (<li key={index}>            
-                        <CategoryItem item={item} titleItem={true}/>                            
-                    </li>))
-                }
-            </ul>
+            <CategoryList titleItem={true} />
 
             <form>
                 <input type="checkbox" id="checkbox" />

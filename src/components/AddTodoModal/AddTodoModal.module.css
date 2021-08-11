@@ -12,9 +12,12 @@
 }
 
 .modalBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 800px;
 
-    height: 500px;
+    max-height: 80vh;
 
     background-color: #fff;
     border-radius: 15px;
@@ -24,12 +27,85 @@
 .modalForm {
     display: flex;
     flex-direction: column;
+    margin-bottom: 45px;
+
+    /* border: 2px solid green; */
 }
 
 .modalControl {
     order: -1;
-    border: 2px solid red;
+    margin-bottom: 5px;
+
 
     display: flex;
     justify-content: space-between;
+}
+
+.modalWrap ul {
+    display: flex;
+    margin-top: 15px;
+    /* border: 2px solid yellow; */
+}
+
+.modalWrap ul li:not(:last-child) {
+    margin-right: 50px;
+}
+
+.modalControl button {
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.modalControl .modalButtonCancel {
+    padding: 8px 40px 8px 0;
+}
+
+.modalControl .modalButtonAdd {
+    padding: 8px 40px;
+    background-color: #69666C;
+    color: #fff;    
+}
+
+.modalForm label {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+
+    font-weight: bold;
+
+    /* border: 2px solid yellow; */
+}
+
+.modalForm input, 
+.modalForm textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #ebe9e4;
+    border-radius: 5px;
+    border: none;
+
+    font-weight: bold;
+    font-family: 'Adobe';
+    font-size: 15px;
+    color: gray;
+}
+
+
+.modalForm input::placeholder {
+    font-weight: bold;
+    font-family: 'Adobe';
+    font-size: 15px;
+    color: gray;
+}
+
+.modalForm textarea {
+    resize: none;
+    color: gray;
 }
