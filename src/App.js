@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Context from './context';
 
 import Header from './components/Header/Header';
@@ -10,6 +10,8 @@ import './App.css';
 
 function App() {
   const [isAddingTodo, setAddingTodo] = useState(false)
+  const [isEditingTodo, setEditingTodo] = useState(false)
+
   const [todos, setTodos] = useState([
     {
       id: 123,
@@ -23,6 +25,7 @@ function App() {
       completed: false},
   ]);
 
+  const [currentTodo, setCurrentTodo] = useState(todos[0])
 
   const toggleDone = (id) => {
     setTodos(
@@ -33,13 +36,25 @@ function App() {
         return todo
       })
     )
+  }  
+
+  const addTodo = (isAdding) => {
+    setAddingTodo(isAdding)
   }
 
-  
 
-  const addTodo = (value) => {
-    setAddingTodo(value)
+
+  const editTodo = (isEditingTodo, id) => {
+    setEditingTodo(isEditingTodo)
+
+    todos.map(item => item.id === id ? 
+      setCurrentTodo(item) : 
+      null
+    ) 
+    
+    console.log(`setCurrentTodo from editTodo: ${currentTodo.title}`)
   }
+
 
   const addNewTodo = (taskTitle, taskDescription) => {
     setTodos(
@@ -55,15 +70,51 @@ function App() {
     )
   }
 
+  const editCurrentTodo = (title, description) => {  
+
+    setTodos( 
+
+      todos.map(todo => {
+        if(todo.id === currentTodo.id) {
+          return {
+            ...todo,
+            title: title,
+            description: description
+          }
+        }
+        else {
+          return todo
+        }
+      })
+    
+    )
+
+    console.log(`setCurrentTodo from editCurrentTodo: ${currentTodo.title}`)
+  }
+
+
+
   return (
-    <Context.Provider value={{addTodo}}>
+    <Context.Provider value={{addTodo, editTodo}}>
       <div className="app">
         <Header />
         <div className="main">
           <Aside />
           <TodoList todos={todos} onToggle={toggleDone} /> 
 
-          {isAddingTodo && <AddTodoModal active={isAddingTodo} setActive={setAddingTodo} onCreateTask={addNewTodo} />}
+          {isAddingTodo && <AddTodoModal 
+            active={isAddingTodo} 
+            setActive={setAddingTodo} 
+            onCreateTask={addNewTodo} 
+          />}
+
+          {isEditingTodo && <AddTodoModal 
+            isEdit
+            active={isEditingTodo} 
+            setActive={setEditingTodo} 
+            onEditTask={editCurrentTodo}
+            currentTodo={currentTodo}
+          />}
         </div>       
 
 

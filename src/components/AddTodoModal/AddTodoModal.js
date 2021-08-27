@@ -1,22 +1,35 @@
-import {useState} from 'react'
-import s from './AddTodoModal.module.css';
+import {useState, useEffect, useContext} from 'react'
+import s from './AddTodoModal.module.css'
+import Context from '../../context'
 
-// import CategoryItem from '../CategoryItem/CategoryItem';
 import CategoryList from '../CategoryList/CategoryList'
 
-const AddTodoModal = ({active, setActive, onCreateTask}) => {
+const AddTodoModal = ({active, setActive, onCreateTask, isEdit, onEditTask, currentTodo }) => {
+ 
+    const [taskTitle, setTaskTitle] = useState(isEdit ? currentTodo.title : '')
+    const [taskDescription, setTaskDescription] = useState(isEdit ? currentTodo.description.toString().replace(/\s+/g, ' ').trim() : '')
 
-    const [taskTitle, setTaskTitle] = useState('')
-    const [taskDescription, setTaskDescription] = useState('')
-
+       
     const submitHandler = (e) => {
         e.preventDefault();
 
         if(taskTitle.trim()) {
-            onCreateTask(taskTitle, taskDescription)
-            setTaskTitle('')
+            if(isEdit) {
+                onEditTask(taskTitle, taskDescription)
+            } else {
+                onCreateTask(taskTitle, taskDescription)
+                setTaskTitle('')
+            }            
             setActive(false)
         }
+    }
+
+    const handleChangeInput = (e) => {
+        setTaskTitle(e.target.value);
+    }
+
+    const handleChangeArea = (e) => {
+        setTaskDescription(e.target.value);
     }
 
     return (
@@ -28,8 +41,8 @@ const AddTodoModal = ({active, setActive, onCreateTask}) => {
                         id="todoTitle" 
                         type="text" 
                         placeholder="add a title..." 
-                        value={taskTitle} 
-                        onChange={e => setTaskTitle(e.target.value) }
+                        value={ taskTitle }
+                        onChange={ handleChangeInput }
                     />
 
 
@@ -38,13 +51,15 @@ const AddTodoModal = ({active, setActive, onCreateTask}) => {
                         id="todoDescription" 
                         rows="5" 
                         placeholder="add a description"
-                        value={taskDescription}
-                        onChange={e => setTaskDescription(e.target.value)}
+                        value={ taskDescription }
+                        onChange={ handleChangeArea }
                     ></textarea>
 
                     <div className={s.modalControl}>
                         <button type="button" className={s.modalButtonCancel} onClick={() => setActive(false)}>Cancel</button>
-                        <button type="submit" className={s.modalButtonAdd}>Add</button>
+                        <button type="submit" className={s.modalButtonAdd}>
+                            {isEdit ? 'Edit' : 'Add'}
+                        </button>
                     </div>
                 </form>
                 

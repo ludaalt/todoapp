@@ -1,9 +1,10 @@
 .colorButton {
     display: inline-block;
+    width: 100%;
     
     border: none;
     background: none;
-    /* padding: 10px 0 10px 10px; */
+    padding: 8px 15px;
     text-align: right;
 
     display: flex;
@@ -12,8 +13,21 @@
     font-family: 'Adobe';
     font-size: 15px;
     font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
 
     /* border: 2px solid green; */
+}
+
+.colorButton:hover {
+    /* transform: scale(1.1); */
+    transition: 0.5s;
+
+    background-color: #ebe9e4;
+}
+
+.colorButton:active {
+    border: 2px solid red;
 }
 
 .category {
@@ -38,5 +52,12 @@
 
 .family {
     background-color: #DAF2D6;
+}
+
+.categoryActive {
+    background-color: lightgray;
+
+    border: 5px solid orange;
+    transform: scale(1.3);
 }
 

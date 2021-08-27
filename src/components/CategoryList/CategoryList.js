@@ -10,7 +10,7 @@ const CategoryList = ({titleItem}) => {
 
         <ul className={s.categoryList}>
                 {
-                    categories.map((item, index) => (<li key={index}>            
+                    categories.map((item, index) => (<li key={index}>           
                         <CategoryItem item={item} titleItem={titleItem} />                             
                     </li>))
                 }

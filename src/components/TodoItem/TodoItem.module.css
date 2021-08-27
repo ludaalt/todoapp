@@ -1,11 +1,11 @@
 .todoItem {
+    min-width: 35%;
     max-width: 45%;
     background-color: #FFF9DE;
     border-radius: 15px;
     padding: 20px;
 
     font-family: 'AdobeBold';
-    display: inline-block;
 }
 
 .todoHeader {

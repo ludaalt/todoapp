@@ -8,26 +8,10 @@
     align-tracks: end, start, end, space-between; */
 
     display: flex;
+    justify-content: space-between;
     align-items: flex-start;
-    
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
 
-
-}
-
-.todoList > div {
-    
-    /* max-width: 45%; */
-    border: 2px solid red;
-    /* display: grid;
-
-    grid-template-rows: auto; */
-    
-    /* break-inside: avoid; */
-    /* display: grid;
-    grid-template-rows: 1fr auto; */
-}
-
-.todoList > div:nth-child(2) {
-    border: 2px solid green;
-    
 }

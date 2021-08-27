@@ -1,12 +1,12 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useContext, useEffect, useRef } from 'react'
 import s from './TodoItem.module.css';
-import cl from 'classnames';
+import Context from '../../context'
 
 import CategoryItem from '../CategoryItem/CategoryItem';
 
 const TodoItem = ({todo, onChangeDone}) => {
     const [isVisibleControls, setVisibleControls] = useState(false)
-
+    
     const todoClasses = [s.todoItem]
 
     if(todo.completed) {
@@ -14,6 +14,7 @@ const TodoItem = ({todo, onChangeDone}) => {
     }
 
     const controlButton = useRef();
+    const {editTodo, currentTodo = todo} = useContext(Context)
 
     useEffect(() => {
         document.onclick = function(e) {
@@ -26,14 +27,17 @@ const TodoItem = ({todo, onChangeDone}) => {
     return (
         todo && <div className={todoClasses.join(' ')}>
             <header className={s.todoHeader}>
-                <h2>{ todo.title}</h2>
+                <h2>{todo.title}</h2>
 
                 <div className={s.controlButtonWrap}>
                     <button onClick={() => setVisibleControls(!isVisibleControls)} className={s.controlButton} ref={controlButton}>
                     </button>
                     { isVisibleControls &&                   
                         <div className={s.controlButtonContent}>
-                            <button className={s.controlButtonItem}>Edit</button>
+                            <button className={s.controlButtonItem} 
+                                    onClick={() => editTodo(true, todo.id)}
+                            >Edit
+                            </button>
                             <button className={s.controlButtonItem}>Delete</button>
                         </div>
                     }

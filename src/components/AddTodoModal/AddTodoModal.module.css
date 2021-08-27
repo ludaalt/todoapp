@@ -108,4 +108,5 @@
 .modalForm textarea {
     resize: none;
     color: gray;
+    line-height: 25px;
 }
