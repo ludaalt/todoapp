@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Context from './context';
 
 import Header from './components/Header/Header';
@@ -22,27 +22,59 @@ function App() {
                     Phasellus ac tempus tortor. Curabitur convallis nibh 
                     sed ex tempor, sit amet auctor lacus eleifend.`, 
       categories: ['study', 'entertainment', 'work'],
-      completed: false},
+      completed: false,
+      isShown: true,
+    },
   ]);
 
   const [currentTodo, setCurrentTodo] = useState(todos[0])
 
+  
+  const updateTasks = (isChecked) => {
+    // console.log(`isChecked: ${isChecked}`)
+
+    if(!isChecked) {
+      setTodos(
+        todos.map(todo => {
+          if(todo.completed) {
+            return {
+              ...todo,
+              isShown: false
+            }
+          }
+          else {
+            return todo
+          }
+        })    
+      )
+    } else {
+
+      setTodos(
+        todos.map(todo => {     
+            return {
+              ...todo,
+              isShown: true
+            }
+          
+        })    
+      )
+    }
+  }
+
   const toggleDone = (id) => {
     setTodos(
-      todos.map(todo => {
-        if(todo.id === id) {
-          todo.completed = !todo.completed
-        }
-        return todo
-      })
+        todos.map(todo => {
+          if(todo.id === id) {
+            todo.completed = !todo.completed
+          }
+          return todo
+        })
     )
   }  
 
   const addTodo = (isAdding) => {
     setAddingTodo(isAdding)
   }
-
-
 
   const editTodo = (isEditingTodo, id) => {
     setEditingTodo(isEditingTodo)
@@ -51,8 +83,6 @@ function App() {
       setCurrentTodo(item) : 
       null
     ) 
-    
-    console.log(`setCurrentTodo from editTodo: ${currentTodo.title}`)
   }
 
 
@@ -64,16 +94,15 @@ function App() {
           title: taskTitle,
           description: taskDescription,
           categories: [],
-          completed: false
+          completed: false,
+          isShown: true,
         }
       ])
     )
   }
 
-  const editCurrentTodo = (title, description) => {  
-
+  const editCurrentTodo = (title, description) => { 
     setTodos( 
-
       todos.map(todo => {
         if(todo.id === currentTodo.id) {
           return {
@@ -85,21 +114,17 @@ function App() {
         else {
           return todo
         }
-      })
-    
+      })    
     )
-
-    console.log(`setCurrentTodo from editCurrentTodo: ${currentTodo.title}`)
   }
 
-
-
+  
   return (
     <Context.Provider value={{addTodo, editTodo}}>
       <div className="app">
         <Header />
         <div className="main">
-          <Aside />
+          <Aside updateTasks={updateTasks} />
           <TodoList todos={todos} onToggle={toggleDone} /> 
 
           {isAddingTodo && <AddTodoModal 

@@ -1,9 +1,9 @@
-aside {
+.aside {
     max-width: 20%;
     margin-right: 80px;
 }
 
-aside li:not(:last-child) {
+.aside li:not(:last-child) {
     margin-bottom: 25px;
 }
 

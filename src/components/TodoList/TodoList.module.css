@@ -1,17 +1,8 @@
 .todoList {
-    border: 2px solid pink;
-
-    /* display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
-    grid-template-rows: masonry;
-    align-tracks: end, start, end, space-between; */
-
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 1rem;
-    width: 100%;
-
+    width: 90%;
 }

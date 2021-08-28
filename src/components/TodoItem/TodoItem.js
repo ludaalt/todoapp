@@ -13,6 +13,10 @@ const TodoItem = ({todo, onChangeDone}) => {
         todoClasses.push(s.done)
     }
 
+    if(!todo.isShown) {
+        todoClasses.push(s.hide)
+    }
+
     const controlButton = useRef();
     const {editTodo, currentTodo = todo} = useContext(Context)
 
