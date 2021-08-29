@@ -2,12 +2,10 @@
     margin-bottom: 40px;
 }
 
- .categoryList li {
-    /* padding: 5px 10px 5px 0;  */
+ .categoryListItem {
     cursor: pointer;
-    /* border: 2px solid red; */
 } 
 
-.categoryList li span {
+.categoryListItem span {
     cursor: pointer;
 }

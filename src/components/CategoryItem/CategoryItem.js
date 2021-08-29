@@ -1,7 +1,10 @@
+import { useState, useEffect } from 'react';
 import s from './CategoryItem.module.css'
 import cl from 'classnames'
 
-const CategoryItem = ({item, titleItem}) => {
+const CategoryItem = ({item, titleItem, activeItem}) => {
+
+    const [isActive, setActive] = useState(false)
      
     const classesToApply = cl(s.category, 
         item === 'work' ?  s.work : '',
@@ -10,24 +13,15 @@ const CategoryItem = ({item, titleItem}) => {
         item === 'family' ?  s.family : '',    
     );
 
-    const handleToggleActive = (e) => {
-        if(!e.target.classList.contains('categoryActive')) {
-           e.target.classList.add('categoryActive')
-           console.log(1)
-        }
-        else {
-            e.target.classList.remove('categoryActive')
-            console.log(2) 
-        }
-
-        // e.target.classList.toggle('categoryActive')
-    }
-
-
+    useEffect(() => {
+        activeItem = isActive;
+    }); 
+    
     return (
-        <button className={s.colorButton} onClick={e => handleToggleActive(e)}>
+        <button className={isActive ? `${s.colorButton} ${s.categoryActive}` : s.colorButton} 
+                onClick={() => setActive(!isActive)}
+        >
             <span className={classesToApply} aria-label="todo-category"></span>
-                {/* {titleItem && item} */}
                 {titleItem && item}
         </button>
     )

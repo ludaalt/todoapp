@@ -15,19 +15,11 @@
     font-weight: bold;
     border-radius: 10px;
     cursor: pointer;
-
-    /* border: 2px solid green; */
 }
 
 .colorButton:hover {
-    /* transform: scale(1.1); */
     transition: 0.5s;
-
     background-color: #ebe9e4;
-}
-
-.colorButton:active {
-    border: 2px solid red;
 }
 
 .category {
@@ -56,8 +48,5 @@
 
 .categoryActive {
     background-color: lightgray;
-
-    border: 5px solid orange;
-    transform: scale(1.3);
 }
 

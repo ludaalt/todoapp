@@ -54,7 +54,7 @@ const TodoItem = ({todo, onChangeDone}) => {
                 <ul className={s.todoCategories}>
                     {todo.categories &&
                         todo.categories.map((item, index) => (<li key={index} title={item}>
-                            <CategoryItem item={item} />                            
+                            <CategoryItem item={item} />                        
                         </li>))
                     }
                 </ul>
@@ -62,11 +62,11 @@ const TodoItem = ({todo, onChangeDone}) => {
                 <form>
                     <input 
                         type="checkbox" 
-                        id="checkboxDone" 
+                        id={todo.id} 
                         checked={todo.completed}
                         onChange={() => onChangeDone(todo.id)}
                     />
-                    <label htmlFor="checkboxDone">Done</label>
+                    <label htmlFor={todo.id}>Done</label>
                 </form>
 
             </div>

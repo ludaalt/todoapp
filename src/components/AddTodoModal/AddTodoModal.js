@@ -4,7 +4,7 @@ import Context from '../../context'
 
 import CategoryList from '../CategoryList/CategoryList'
 
-const AddTodoModal = ({active, setActive, onCreateTask, isEdit, onEditTask, currentTodo }) => {
+const AddTodoModal = ({setActive, onCreateTask, isEdit, onEditTask, currentTodo }) => {
  
     const [taskTitle, setTaskTitle] = useState(isEdit ? currentTodo.title : '')
     const [taskDescription, setTaskDescription] = useState(isEdit ? currentTodo.description.toString().replace(/\s+/g, ' ').trim() : '')
@@ -65,7 +65,7 @@ const AddTodoModal = ({active, setActive, onCreateTask, isEdit, onEditTask, curr
                 
                 <div>
                     <h3>Tags</h3>
-                    <CategoryList titleItem={true} />
+                    <CategoryList titleItem={true} activeItem={true} /> 
                 </div>               
                
             </div>

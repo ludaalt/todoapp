@@ -31,8 +31,6 @@ function App() {
 
   
   const updateTasks = (isChecked) => {
-    // console.log(`isChecked: ${isChecked}`)
-
     if(!isChecked) {
       setTodos(
         todos.map(todo => {
@@ -118,6 +116,10 @@ function App() {
     )
   }
 
+  const setActiveCategories = () => {
+    console.log(`setActiveCategories`)
+  }
+
   
   return (
     <Context.Provider value={{addTodo, editTodo}}>
@@ -131,6 +133,7 @@ function App() {
             active={isAddingTodo} 
             setActive={setAddingTodo} 
             onCreateTask={addNewTodo} 
+            setActiveCategories={setActiveCategories}
           />}
 
           {isEditingTodo && <AddTodoModal 

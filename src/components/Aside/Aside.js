@@ -7,7 +7,7 @@ const Aside = ({ updateTasks }) => {
 
     return (
         <aside className={s.aside}>
-            <CategoryList titleItem={true} />
+            <CategoryList titleItem={true} /> 
 
             <form>
                 <input 
