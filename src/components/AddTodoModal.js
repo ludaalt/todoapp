@@ -176,7 +176,7 @@ const AddTodoModal = ({
 
         <div>
           <h3>Tags</h3>
-          <CategoryList titleItem={true} activeItem={true} />
+          <CategoryList isEdit={isEdit} titleItem={true} activeItem={true} />
         </div>
       </ModalBody>
     </ModalWrap>

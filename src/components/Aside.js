@@ -23,7 +23,7 @@ const Aside = ({ updateTasks }) => {
 
   return (
     <AsideContainer>
-      <CategoryList titleItem={true} />
+      <CategoryList />
 
       <Form>
         <input

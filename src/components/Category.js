@@ -7,9 +7,7 @@ const StyledCategory = styled.span`
   height: 30px;
   border-radius: 50%;
 
-  border: 3px solid green;
-
-  /* background-color: ${(props) =>
+  background-color: ${(props) =>
     props.item === "work"
       ? "#d2ceff"
       : props.item === "study"
@@ -18,13 +16,10 @@ const StyledCategory = styled.span`
       ? "#ffcece"
       : props.item === "family"
       ? "#daf2d6"
-      : "none"}; */
-
-  background-color: ${(props) => (props.item === "family" ? "red" : "yellow")};
+      : "none"};
 `;
 
 const Category = ({ item }) => {
-  console.log(item);
   return <StyledCategory item={item} aria-label="todo-category" />;
 };
 

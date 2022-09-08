@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Context from "./context";
 
-import Header from "./components/Header/Header";
-import Aside from "./components/Aside/Aside";
-import TodoList from "./components/TodoList/TodoList";
-import AddTodoModal from "./components/AddTodoModal/AddTodoModal";
+import Header from "./components/Header";
+import Aside from "./components/Aside";
+import TodoList from "./components/TodoList";
+import AddTodoModal from "./components/AddTodoModal";
 
 import "./App.css";
 

@@ -1,22 +1,12 @@
-import { useState, useContext, useEffect, useRef } from "react";
+import { useState, useContext } from "react";
+import styled from "styled-components";
+
 import Context from "../context";
-
-import CategoryItem from "../CategoryItem/CategoryItem";
-
-import styled, { keyframes } from "styled-components";
-
-const doneTask = keyframes`
-  0% {
-    transform-origin: 0% 50%;
-    transform: scaleX(0);
-  }
-  100% {
-    transform-origin: 0% 50%;
-    transform: scaleX(1);
-  }
-`;
+import CategoryItem from "./CategoryItem";
+import TodoItemControlButton from "./TodoItemControlButton";
 
 const Todo = styled.div`
+  cursor: pointer;
   width: 49%;
   background-color: #fff9de;
   border-radius: 15px;
@@ -24,14 +14,17 @@ const Todo = styled.div`
   font-family: "AdobeBold";
   display: ${(props) => (props.todo && !props.todo.isShown ? "none" : "block")};
 
+  &:hover {
+    background-color: #fffdd0;
+  }
+
   & p {
     margin: 15px 0;
     font-size: 15px;
     line-height: 22px;
     letter-spacing: 0.5px;
 
-    text-decoration: ${(props) =>
-      props.todo && props.todo.completed ? "line-through" : "none"};
+    text-decoration: ${(props) => (props.completed ? "line-through" : "none")};
   }
 `;
 
@@ -43,68 +36,17 @@ const TodoMainHeader = styled.header`
 
 const TodoHeader = styled.h2`
   font-size: 20px;
-
-  position: ${(props) =>
-    props.todo && props.todo.completed ? "relative" : "static"};
+  position: relative;
 
   &::after {
     content: " ";
     position: absolute;
     top: calc(50% - 1px);
     left: 0;
-    width: 100%;
+    width: ${(props) => (props.completed ? "100%" : 0)};
     background-color: #69666c;
     height: 2px;
-    animation: ${doneTask} 0.75s ease-in-out forwards;
-  }
-`;
-
-const ControlButtonWrap = styled.div`
-  position: relative;
-`;
-
-const ControlButton = styled.button`
-  display: inline-block;
-  padding: 20px 15px 5px 15px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: inherit;
-
-  &::after {
-    content: "\2809";
-    font-size: 30px;
-    line-height: 20px;
-  }
-`;
-
-const ControlButtonContent = styled.div`
-  position: absolute;
-  top: 30px;
-  left: -110px;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0px 0px 3px 1px #f2f6f9;
-  color: #69666c;
-
-  & button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 12px 100px 12px 15px;
-    color: #69666c;
-    font-family: "Adobe";
-    font-weight: bold;
-
-    &:first-child {
-      border-bottom: 1px solid #f2f6f9;
-
-      &::after {
-        content: "...";
-      }
-    }
+    transition: all 0.5s cubic-bezier(0.02, 0.01, 0.47, 1);
   }
 `;
 
@@ -118,38 +60,19 @@ const ControlPanel = styled.div`
   }
 `;
 
-const TodoItem = ({ todo, onChangeDone }) => {
-  const [isVisibleControls, setVisibleControls] = useState(false);
+const TodoItem = ({ todo }) => {
+  //const controlButton = useRef();
+  const { editTodo } = useContext(Context);
 
-  const controlButton = useRef();
-  const { editTodo, currentTodo = todo } = useContext(Context);
-
-  useEffect(() => {
-    document.onclick = function (e) {
-      if (e.target !== this.controlButton && isVisibleControls) {
-        setVisibleControls(false);
-      }
-    };
-  });
+  const [completed, setCompleted] = useState(todo.completed);
 
   return (
     todo && (
-      <Todo>
+      <Todo completed={completed}>
         <TodoMainHeader>
-          <TodoHeader>{todo.title}</TodoHeader>
+          <TodoHeader completed={completed}>{todo.title}</TodoHeader>
 
-          <ControlButtonWrap>
-            <ControlButton
-              onClick={() => setVisibleControls(!isVisibleControls)}
-              ref={controlButton}
-            ></ControlButton>
-            {isVisibleControls && (
-              <ControlButtonContent>
-                <button onClick={() => editTodo(true, todo.id)}>Edit</button>
-                <button>Delete</button>
-              </ControlButtonContent>
-            )}
-          </ControlButtonWrap>
+          <TodoItemControlButton editTodo={editTodo} todo={todo} />
         </TodoMainHeader>
         <p>{todo.description}</p>
 
@@ -167,10 +90,9 @@ const TodoItem = ({ todo, onChangeDone }) => {
             <input
               type="checkbox"
               id={todo.id}
-              checked={todo.completed}
-              onChange={() => onChangeDone(todo.id)}
+              onChange={() => setCompleted(!completed)}
             />
-            <label htmlFor={todo.id}>Done</label>
+            <label htmlFor={todo.id}> Done</label>
           </form>
         </ControlPanel>
       </Todo>

@@ -1,15 +1,19 @@
 .app {
-    font-family: 'Adobe';
-    color: #69666C;
-    padding: 4rem;
+  font-family: "Adobe";
+  color: #69666c;
+  padding: 4rem;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 .main {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
+button {
+  border: none;
+  background-color: none;
+}

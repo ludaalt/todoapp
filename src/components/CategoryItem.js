@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import Category from "../Category";
+import Category from "./Category";
 
 const ColorButton = styled.button`
   display: inline-block;
@@ -18,27 +18,23 @@ const ColorButton = styled.button`
   cursor: pointer;
   background: ${(props) => (props.isActive ? "lightgray" : "none")};
 
-  border: 3px solid red;
-
   &:hover {
     transition: 0.5s;
     background-color: #ebe9e4;
   }
 `;
 
-const CategoryItem = ({ item, titleItem }) => {
+const CategoryItem = ({ item }) => {
   const [isActive, setActive] = useState(false);
 
-  console.log(isActive);
-
-  // useEffect(() => {
-  //   activeItem = isActive;
-  // });
-
   return (
-    <ColorButton type="button" isActive onClick={() => setActive(!isActive)}>
-      <Category titleItem />
-      {titleItem && item}
+    <ColorButton
+      type="button"
+      isActive={isActive}
+      onClick={() => setActive(!isActive)}
+    >
+      <Category item={item} />
+      {item}
     </ColorButton>
   );
 };
