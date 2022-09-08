@@ -1,27 +1,44 @@
-import { useState, useEffect } from 'react';
-import s from './Aside.module.css';
-import CategoryList from '../CategoryList/CategoryList';
+import { useState } from "react";
+import CategoryList from "../CategoryList/CategoryList";
+
+import styled from "styled-components";
+
+const AsideContainer = styled.aside`
+  max-width: 20%;
+  margin-right: 80px;
+
+  & li:not(:last-child) {
+    margin-bottom: 25px;
+  }
+`;
+
+const Form = styled.form`
+  & input {
+    margin-right: 10px;
+  }
+`;
 
 const Aside = ({ updateTasks }) => {
-    const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(false);
 
-    return (
-        <aside className={s.aside}>
-            <CategoryList titleItem={true} /> 
+  return (
+    <AsideContainer>
+      <CategoryList titleItem={true} />
 
-            <form>
-                <input 
-                    onClick={() => { updateTasks(checked) }}
-                    onChange={() => setChecked(!checked)} 
-                    type="checkbox" 
-                    id="checkbox" 
-                    checked={checked} 
-                />
-                <label htmlFor="checkbox">Hide Done Tasks</label>
-            </form>
-
-        </aside>
-    )
-}
+      <Form>
+        <input
+          onClick={() => {
+            updateTasks(checked);
+          }}
+          onChange={() => setChecked(!checked)}
+          type="checkbox"
+          id="checkbox"
+          checked={checked}
+        />
+        <label htmlFor="checkbox">Hide Done Tasks</label>
+      </Form>
+    </AsideContainer>
+  );
+};
 
 export default Aside;

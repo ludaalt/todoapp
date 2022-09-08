@@ -1,36 +1,34 @@
-import { useState } from "react"
+import CategoryItem from "../CategoryItem/CategoryItem";
 
-import s from './CategoryList.module.css'
-import CategoryItem from "../CategoryItem/CategoryItem"
+import styled from "styled-components";
 
-const CategoryList = ({titleItem, activeItem}) => {
-    const [categories, setCategories] = useState({
-        'work': false, 
-        'study': false,
-        'entertainment': false,
-        'family': false,
-    })
+const CategoryListWrap = styled.ul`
+  margin-bottom: 40px;
 
-    return (
+  & li,
+  & span {
+    cursor: pointer;
+  }
 
-        <ul className={s.categoryList}>
-            {
-                categories.map((item, index) => (
-                        
-                    <li className={s.categoryListItem} key={index}>           
-                        <CategoryItem 
-                            item={item} 
-                            titleItem={titleItem}
-                            activeItem={activeItem} 
-                        />                             
-                    </li> 
-                ))
+  border: 3px solid red;
+`;
 
-                
-            }
-        </ul>
+const CategoryList = ({ titleItem, activeItem }) => {
+  const categories = ["work", "study", "entertainment", "family"];
 
-    )
-}
+  return (
+    <CategoryListWrap>
+      {categories.map((item, index) => (
+        <li key={index}>
+          <CategoryItem
+            item={item}
+            titleItem={titleItem}
+            activeItem={activeItem}
+          />
+        </li>
+      ))}
+    </CategoryListWrap>
+  );
+};
 
-export default CategoryList
+export default CategoryList;

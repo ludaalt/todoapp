@@ -1,30 +1,46 @@
-import { useState, useEffect } from 'react';
-import s from './CategoryItem.module.css'
-import cl from 'classnames'
+import { useState } from "react";
+import styled from "styled-components";
 
-const CategoryItem = ({item, titleItem, activeItem}) => {
+import Category from "../Category";
 
-    const [isActive, setActive] = useState(false)
-     
-    const classesToApply = cl(s.category, 
-        item === 'work' ?  s.work : '',
-        item === 'study' ?  s.study : '',
-        item === 'entertainment' ?  s.entertainment : '',
-        item === 'family' ?  s.family : '',    
-    );
+const ColorButton = styled.button`
+  display: inline-block;
+  width: 100%;
+  border: none;
+  padding: 8px 15px;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  font-family: "Adobe";
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  background: ${(props) => (props.isActive ? "lightgray" : "none")};
 
-    useEffect(() => {
-        activeItem = isActive;
-    }); 
-    
-    return (
-        <button className={isActive ? `${s.colorButton} ${s.categoryActive}` : s.colorButton} 
-                onClick={() => setActive(!isActive)}
-        >
-            <span className={classesToApply} aria-label="todo-category"></span>
-                {titleItem && item}
-        </button>
-    )
-}
+  border: 3px solid red;
 
-export default CategoryItem
+  &:hover {
+    transition: 0.5s;
+    background-color: #ebe9e4;
+  }
+`;
+
+const CategoryItem = ({ item, titleItem }) => {
+  const [isActive, setActive] = useState(false);
+
+  console.log(isActive);
+
+  // useEffect(() => {
+  //   activeItem = isActive;
+  // });
+
+  return (
+    <ColorButton type="button" isActive onClick={() => setActive(!isActive)}>
+      <Category titleItem />
+      {titleItem && item}
+    </ColorButton>
+  );
+};
+
+export default CategoryItem;

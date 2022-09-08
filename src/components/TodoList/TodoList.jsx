@@ -1,19 +1,32 @@
-import TodoItem from '../TodoItem/TodoItem'
-import s from './TodoList.module.css'
+import TodoItem from "../TodoItem/TodoItem";
 
-const TodoList = ({todos, onToggle}) => {
-    return (
-        <ul className={s.todoList}>
-            {todos.length && todos.map((todo, index) => (
-                todo && <TodoItem 
-                    index={index} 
-                    todo={todo}
-                    key={todo.id}
-                    onChangeDone={onToggle}
-                />
-            ))}
-        </ul>
-    )
-}
+import styled from "styled-components";
 
-export default TodoList
+const Todos = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 90%;
+`;
+
+const TodoList = ({ todos, onToggle }) => {
+  return (
+    <Todos>
+      {todos &&
+        todos.map(
+          (todo, index) =>
+            todo && (
+              <TodoItem
+                index={index}
+                todo={todo}
+                key={todo.id}
+                onChangeDone={onToggle}
+              />
+            )
+        )}
+    </Todos>
+  );
+};
+
+export default TodoList;
