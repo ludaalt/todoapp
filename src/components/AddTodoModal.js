@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CategoryList from "../CategoryList/CategoryList";
+import CategoryList from "./CategoryList";
 
 import styled from "styled-components";
 

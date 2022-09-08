@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect, useRef } from "react";
-import Context from "../../context";
+import Context from "../context";
 
 import CategoryItem from "../CategoryItem/CategoryItem";
 

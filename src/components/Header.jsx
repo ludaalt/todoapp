@@ -1,4 +1,4 @@
-import AddTodoButton from "../AddTodoButton";
+import AddTodoButton from "./AddTodoButton";
 import styled from "styled-components";
 
 const Head = styled.header`
