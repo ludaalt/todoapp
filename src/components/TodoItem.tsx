@@ -1,9 +1,9 @@
-import { useState, useContext } from "react";
-import styled from "styled-components";
+import { useState, useContext } from 'react';
+import styled from 'styled-components';
 
-import Context from "../context";
-import CategoryItem from "./CategoryItem";
-import TodoItemControlButton from "./TodoItemControlButton";
+import Context from '../context';
+import CategoryItem from './CategoryItem';
+import TodoItemControlButton from './TodoItemControlButton';
 
 const Todo = styled.div`
   cursor: pointer;
@@ -11,8 +11,8 @@ const Todo = styled.div`
   background-color: #fff9de;
   border-radius: 15px;
   padding: 20px;
-  font-family: "AdobeBold";
-  display: ${(props) => (props.todo && !props.todo.isShown ? "none" : "block")};
+  font-family: 'AdobeBold';
+  display: ${(props) => (props.todo && !props.todo.isShown ? 'none' : 'block')};
 
   &:hover {
     background-color: #fffdd0;
@@ -24,7 +24,7 @@ const Todo = styled.div`
     line-height: 22px;
     letter-spacing: 0.5px;
 
-    text-decoration: ${(props) => (props.completed ? "line-through" : "none")};
+    text-decoration: ${(props) => (props.completed ? 'line-through' : 'none')};
   }
 `;
 
@@ -39,11 +39,11 @@ const TodoHeader = styled.h2`
   position: relative;
 
   &::after {
-    content: " ";
+    content: ' ';
     position: absolute;
     top: calc(50% - 1px);
     left: 0;
-    width: ${(props) => (props.completed ? "100%" : 0)};
+    width: ${(props) => (props.completed ? '100%' : 0)};
     background-color: #69666c;
     height: 2px;
     transition: all 0.5s cubic-bezier(0.02, 0.01, 0.47, 1);
@@ -87,11 +87,7 @@ const TodoItem = ({ todo }) => {
           </ul>
 
           <form>
-            <input
-              type="checkbox"
-              id={todo.id}
-              onChange={() => setCompleted(!completed)}
-            />
+            <input type="checkbox" id={todo.id} onChange={() => setCompleted(!completed)} />
             <label htmlFor={todo.id}> Done</label>
           </form>
         </ControlPanel>

@@ -1,8 +1,8 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 
-import Context from "../context";
+import Context from '../context';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const AddTodoButton = styled.button`
   display: inline-block;
@@ -18,7 +18,7 @@ const AddTodo = () => {
 
   return (
     <AddTodoButton onClick={() => addTodo(true)} title="Add New Todo">
-      +
+      {'U+002B'}
     </AddTodoButton>
   );
 };

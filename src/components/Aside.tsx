@@ -1,7 +1,6 @@
-import { useState } from "react";
-import CategoryList from "./CategoryList";
-
-import styled from "styled-components";
+import { useState } from 'react';
+import styled from 'styled-components';
+import CategoryList from './CategoryList';
 
 const AsideContainer = styled.aside`
   max-width: 20%;

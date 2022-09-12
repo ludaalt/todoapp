@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import styled from "styled-components";
+import { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
 const ControlButtonWrap = styled.div`
   position: relative;
@@ -40,14 +40,14 @@ const ControlButtonContent = styled.div`
     cursor: pointer;
     padding: 12px 100px 12px 15px;
     color: #69666c;
-    font-family: "Adobe";
+    font-family: 'Adobe';
     font-weight: bold;
 
     &:first-child {
       border-bottom: 2px solid #f5f5f5;
 
       &::after {
-        content: "...";
+        content: '...';
       }
     }
   }
@@ -66,9 +66,7 @@ const TodoItemControlButton = ({ editTodo, todo }) => {
 
   return (
     <ControlButtonWrap>
-      <ControlButton onClick={() => setVisibleControls(!isVisibleControls)}>
-        {"\u2026"}
-      </ControlButton>
+      <ControlButton onClick={() => setVisibleControls(!isVisibleControls)}>{'\u2026'}</ControlButton>
       {isVisibleControls && (
         <ControlButtonContent>
           <button onClick={() => editTodo(true, todo.id)}>Edit</button>

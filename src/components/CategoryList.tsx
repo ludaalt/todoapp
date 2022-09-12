@@ -1,10 +1,10 @@
-import CategoryItem from "./CategoryItem";
+import CategoryItem from './CategoryItem';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const CategoryListWrap = styled.ul`
   margin-bottom: 40px;
-  display: ${(props) => (props.isEdit ? "flex" : "block")};
+  display: ${(props) => (props.isEdit ? 'flex' : 'block')};
 
   & li,
   & span {
@@ -13,7 +13,7 @@ const CategoryListWrap = styled.ul`
 `;
 
 const CategoryList = ({ isEdit }) => {
-  const categories = ["work", "study", "entertainment", "family"];
+  const categories = ['work', 'study', 'entertainment', 'family'];
 
   return (
     <CategoryListWrap isEdit={isEdit}>

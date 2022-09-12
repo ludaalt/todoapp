@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledCategory = styled.span`
   display: inline-block;
@@ -8,15 +8,15 @@ const StyledCategory = styled.span`
   border-radius: 50%;
 
   background-color: ${(props) =>
-    props.item === "work"
-      ? "#d2ceff"
-      : props.item === "study"
-      ? "#d1e5f7"
-      : props.item === "entertainment"
-      ? "#ffcece"
-      : props.item === "family"
-      ? "#daf2d6"
-      : "none"};
+    props.item === 'work'
+      ? '#d2ceff'
+      : props.item === 'study'
+      ? '#d1e5f7'
+      : props.item === 'entertainment'
+      ? '#ffcece'
+      : props.item === 'family'
+      ? '#daf2d6'
+      : 'none'};
 `;
 
 const Category = ({ item }) => {

@@ -1,7 +1,7 @@
-import { useState } from "react";
-import CategoryList from "./CategoryList";
+import { useState } from 'react';
+import CategoryList from './CategoryList';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ModalWrap = styled.div`
   display: flex;
@@ -48,14 +48,14 @@ const ModalForm = styled.form`
     border: none;
 
     font-weight: bold;
-    font-family: "Adobe";
+    font-family: 'Adobe';
     font-size: 15px;
     color: gray;
   }
 
   & input::placeholder {
     font-weight: bold;
-    font-family: "Adobe";
+    font-family: 'Adobe';
     font-size: 15px;
     color: gray;
   }
@@ -104,16 +104,10 @@ const ModalControl = styled.div`
   }
 `;
 
-const AddTodoModal = ({
-  setActive,
-  onCreateTask,
-  isEdit,
-  onEditTask,
-  currentTodo,
-}) => {
-  const [taskTitle, setTaskTitle] = useState(isEdit ? currentTodo.title : "");
+const AddTodoModal = ({ setActive, onCreateTask, isEdit, onEditTask, currentTodo }) => {
+  const [taskTitle, setTaskTitle] = useState(isEdit ? currentTodo.title : '');
   const [taskDescription, setTaskDescription] = useState(
-    isEdit ? currentTodo.description.toString().replace(/\s+/g, " ").trim() : ""
+    isEdit ? currentTodo.description.toString().replace(/\s+/g, ' ').trim() : '',
   );
 
   const submitHandler = (e) => {
@@ -124,7 +118,7 @@ const AddTodoModal = ({
         onEditTask(taskTitle, taskDescription);
       } else {
         onCreateTask(taskTitle, taskDescription);
-        setTaskTitle("");
+        setTaskTitle('');
       }
       setActive(false);
     }
@@ -161,15 +155,11 @@ const AddTodoModal = ({
           ></textarea>
 
           <ModalControl>
-            <button
-              type="button"
-              className="modalButtonCancel"
-              onClick={() => setActive(false)}
-            >
+            <button type="button" className="modalButtonCancel" onClick={() => setActive(false)}>
               Cancel
             </button>
             <button type="submit" className="modalButtonAdd">
-              {isEdit ? "Edit" : "Add"}
+              {isEdit ? 'Edit' : 'Add'}
             </button>
           </ModalControl>
         </ModalForm>
